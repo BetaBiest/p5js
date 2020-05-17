@@ -59,7 +59,7 @@ function setup() {
 
     grid = make2DArray(size.cols, size.rows);
 
-    for (let x in grid){
+    for (let x = 0; x < size.cols; x++){
         for (let y = 0; y < size.rows; y++) {
             grid[x][y] = floor(random(2));
         }
@@ -72,17 +72,17 @@ function windowResized() {
     background(100, 140, 210);
     calcNumOfCnR(size, scl);
     grid = make2DArray(size.cols, size.rows);
-        for (let x in grid){
-            for (let y in x) {
-                grid[x][y] = floor(random(2));
-            }
+    for (let x in grid){
+        for (let y = 0; y < size.rows; y++) {
+            grid[x][y] = floor(random(2));
         }
+    }
 }
 
 function draw() {
     background(100, 140, 210);
 
-    for (let x in grid) {
+    for (let x = 0; x < size.cols; x++) {
         for (let y = 0; y < size.rows; y++) {
             let xpos = x*scl;
             let ypos = y*scl;
@@ -96,7 +96,7 @@ function draw() {
     let next = make2DArray(size.cols, size.rows);
 
     // Compute next Gen
-    for (let x in grid) {
+    for (let x = 0; x < size.cols; x++) {
         for (let y = 0; y < size.rows; y++) {
 
             // Count neighbours in predefined range (1 == 3x3 field)
