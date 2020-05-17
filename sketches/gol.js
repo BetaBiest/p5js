@@ -1,6 +1,6 @@
 var grid;
 let size = {"cols": 0, "rows": 0};
-let scl = 20; //Boxsize in pixel
+let scl = 10; //Boxsize in pixel
 let range = 1;
 
 
@@ -53,10 +53,8 @@ function setup() {
 
     background(100, 140, 210);
 
-    //size = calcNumOfCnR(size, scl);
-    size.cols = 5;
-    size.rows = 10;
-
+    size = calcNumOfCnR(size, scl);
+    
     grid = make2DArray(size.cols, size.rows);
 
     for (let x = 0; x < size.cols; x++){
