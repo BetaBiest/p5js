@@ -17,9 +17,9 @@
 
  In order for you to be able to orientate yourself in my code and to practice my .md-skills I´m giving a bit of insight how my files are structured:
 
- 1. Index.html is the main site which you would want to run to see the sketch
- 2. The sketches themself are placed in the folder skeches. If the sketch is small its just one file, else im placing it with the related files in an extra folder
- 3. The sketches aren´t directly embedded in the index.html but in the sketch.html which is embedded in the index.html. So if you want to change the sketch you currently got to do this inside the sketch.html.
+ 1. _index.html_ is the main site which you would want to run to see the sketch
+ 2. The sketches themself are placed in the folder _sketches_. If the sketch is small its just one file, else im placing it with the related files in an extra folder
+ 3. The sketches aren´t directly embedded in the _index.html_ but in the _sketch.html_ which is embedded in the _index.html_. So if you want to change the sketch you currently got to do this inside the _sketch.html_.
 
 ---
 
