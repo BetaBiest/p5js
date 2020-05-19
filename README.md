@@ -2,7 +2,7 @@
 
 ## About
 
- I am a Student, this is my space to learn and experience around with p5.js.  
+ I am a student, this is my space to learn and experience p5.js.  
  Be aware that this rep probably doesn´t follow any conventions and probably contains lots of mistakes.
  However feel free to use the code I publish here for your own purposes whatever they may be.  
  If there are any question ill try to awnser them but I´m only an expert yet to become ;-).
@@ -26,7 +26,7 @@
 ## Etc
 
  Have fun coding.  
- Suggetions and Feedback are welcome.  
+ Suggetions and feedback are welcome.  
  Yes the website itself looks crappy atm. I´m working on it ;)
 
  ![CoffeeCup](https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Emojione_2615.svg/1024px-Emojione_2615.svg.png "Good Coffee")
