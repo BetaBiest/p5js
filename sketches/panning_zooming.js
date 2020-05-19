@@ -12,9 +12,6 @@ class Coordinate {
     }
 }
 
-let i_sc = new Coordinate(); // screencoordinates
-let f_wc = new Coordinate(); // worldcoordinates
-
 var f_offset = new p5.Vector(); // screenoffset
 var f_offset_mouse = new p5.Vector; // mouse offset
 
@@ -29,7 +26,7 @@ function wTs(f_wc, i_sc) { // World to Screenspace
     return i_sc;
 }
 
-function sTw(i_sc, f_wc) { // Screen- to Worldspace
+function sTw(i_sc, f_wc) { // Screen- to worldspace
 
     f_wc.x = (i_sc.x / f_scaleX + f_offset.x);
     f_wc.y = (i_sc.y / f_scaleY + f_offset.y);
@@ -37,9 +34,13 @@ function sTw(i_sc, f_wc) { // Screen- to Worldspace
     return f_wc;
 }
 
-function mousePressed() {
+function mousePressed() { // Capture mouse position in worldspace
     f_offset_mouse.x = mouseX;
     f_offset_mouse.y = mouseY;
+}
+
+function mouseClicked() {
+
 }
 
 function mouseDragged() { // Panning
@@ -71,6 +72,31 @@ function mouseWheel() { // Zooming
 
 }
 
+function keyTyped() { // Return to starting position with spacebar
+    if (key == ' ') {
+        // Places world (0, 0) into screen middle
+        f_offset.x = -width/2;
+        f_offset.y = -height/2;
+
+        f_scaleX = 1.;
+        f_scaleY = 1.;
+    }
+    else if (key == '+') {
+        f_scaleX += 1.1;
+        f_scaleY += 1.1;
+        
+        f_offset.x += 10;
+        f_offset.y += 10;
+    }
+    else if (key == '-') {
+        f_scaleX *= 0.8;
+        f_scaleY *= 0.8;
+        
+        f_offset.x += 10;
+        f_offset.y += 10;
+    }
+}
+
 
 
 function setup() {
@@ -94,9 +120,9 @@ function draw() {
     background(100, 140, 210);
 
     // Draw 10 hrz lines
-    for (let y = 0.; y <= 100.; y+=10) {
-        let s = new Coordinate(0., y);
-        let e = new Coordinate(100., y);
+    for (let y = -50.; y <= 50.; y+=10) {
+        let s = new Coordinate(-50., y);
+        let e = new Coordinate(50., y);
 
         let pixel_s = new Coordinate(0, 0);
         let pixel_e = new Coordinate(0, 0);
@@ -108,9 +134,9 @@ function draw() {
     }
 
     // Draw 10 vtk lines
-    for (let x = 0.; x <= 100.; x+=10) {
-        let s = new Coordinate(x, 0.);
-        let e = new Coordinate(x, 100.);
+    for (let x = -50.; x <= 50.; x+=10) {
+        let s = new Coordinate(x, -50.);
+        let e = new Coordinate(x, 50.);
 
         let pixel_s = new Coordinate(0, 0);
         let pixel_e = new Coordinate(0, 0);
