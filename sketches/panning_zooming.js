@@ -81,20 +81,14 @@ function keyTyped() { // Return to starting position with spacebar
         f_scaleX = 1.;
         f_scaleY = 1.;
     }
-    else if (key == '+') {
+    /* else if (key == '+') {
         f_scaleX += 1.1;
         f_scaleY += 1.1;
-        
-        f_offset.x += 10;
-        f_offset.y += 10;
     }
     else if (key == '-') {
         f_scaleX *= 0.8;
         f_scaleY *= 0.8;
-        
-        f_offset.x += 10;
-        f_offset.y += 10;
-    }
+    } */
 }
 
 
