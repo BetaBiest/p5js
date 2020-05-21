@@ -91,8 +91,14 @@ function keyTyped() { // Return to starting position with spacebar
     } */
 }
 
+
+
 function setup() {
-    var canvas = makeCanvas();
+    
+	//Window.innerSize is relative to the space allocated by the CSS Sheet
+	var canvas = createCanvas(window.innerWidth, window.innerHeight);
+	canvas.style('display', 'flex'); //Defines CSS Style
+	canvas.parent('sketch-holder'); //Placeholder has to be ID of a <div> in the htmlDoc
 
     background(100, 140, 210);
     
@@ -101,11 +107,6 @@ function setup() {
     // Places world (0, 0) into screen middle
     f_offset.x = -width/2;
     f_offset.y = -height/2;
-}
-
-function windowResized() {
-    fitCanvas(canvas);
-    background(100, 140, 210);
 }
 
 function draw() {
