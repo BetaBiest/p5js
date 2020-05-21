@@ -17,9 +17,9 @@
 
  In order for you to be able to orientate yourself in my code and to practice my .md-skills I´m giving a bit of insight how my files are structured:
 
- 1. _index.html_ is the main site which you would want to run to see the sketch
- 2. The sketches themself are placed in the folder _sketches_. If the sketch is small its just one file, else im placing it with the related files in an extra folder
- 3. The sketches aren´t directly embedded in the _index.html_ but in the _sketch.html_ which is embedded in the _index.html_. So if you want to change the sketch you currently got to do this inside the _sketch.html_.
+ 1. _index.html_ is the main site which you would want to run to see the sketches
+ 2. The sketches themself are placed in the folder _sketches_. If the sketch is small its 2 files (_\[projektname\].html_, _\[projektname\].js_), else im placing the _\[projektname\].js_ with the related _.js_ files in an extra folder
+ 3. The sketches aren´t directly embedded in the _index.html_ but in the _\[projektname\].html_ which is embedded in the _index.html_ over an iframe. The source from the iframe gets changed to the selected _\[projektname\].html_ by a small JS function.
 
 ---
 
