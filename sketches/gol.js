@@ -45,11 +45,7 @@ function countNeighbours(grid, x, y, cntRange = 1) {
 
 
 function setup() {
-    
-	//Window.innerSize is relative to the space allocated by the CSS Sheet
-	var canvas = createCanvas(window.innerWidth, window.innerHeight);
-	canvas.style('display', 'flex'); //Defines CSS Style
-	canvas.parent('sketch-holder'); //Placeholder has to be ID of a <div> in the htmlDoc
+    var canvas = makeCanvas();
 
     background(100, 140, 210);
 
@@ -66,7 +62,7 @@ function setup() {
 }
 
 function windowResized() {
-    resizeCanvas(windowWidth, windowHeight);
+    fitCanvas(canvas);
     background(100, 140, 210);
     calcNumOfCnR(size, scl);
     grid = make2DArray(size.cols, size.rows);
