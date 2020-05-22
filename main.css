@@ -61,7 +61,8 @@ iframe {
 }
 
 
-@media only screen and (max-height: 500px) {
+@media only screen and (max-height: 650px) {
+    #header {display: none;}
 }
 
 @media only screen and (min-width: 1400px) {
