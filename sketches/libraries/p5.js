@@ -59072,6 +59072,7 @@ p5.prototype.loadStrings = function() {
  * <p>Possible options include:
  * <ul>
  * <li>csv - parse the table as comma-separated values</li>
+ * <li>ssv - parse the table as semicolon-separated values</li>
  * <li>tsv - parse the table as tab-separated values</li>
  * <li>header - this table has a header (title) row</li>
  * </ul>
@@ -59096,7 +59097,7 @@ p5.prototype.loadStrings = function() {
  *
  * @method loadTable
  * @param  {String}         filename   name of the file or URL to load
- * @param  {String}         options  "header" "csv" "tsv"
+ * @param  {String}         options  "header" "csv" "ssv" "tsv"
  * @param  {function}       [callback] function to be executed after
  *                                     loadTable() completes. On success, the
  *                                     Table object is passed in as the
