@@ -2,10 +2,10 @@ let t_data;
 var total = 0;
 var entries;
 var y_max = 0;
-let data_m, data_w;
-var y_lengh;
+let data_m, data_w, x_lables;
+var y_length;
 var y_spacing;
-var x_lengh;
+var x_length;
 var x_spacing;
 
 function preload() {
@@ -20,15 +20,7 @@ function setup() {
     //count the columns
     console.log(t_data.getRowCount() + ' total rows in table');
     console.log(t_data.getColumnCount() + ' total columns in table');
-
-    //print(t_data.getColumn('name'));
-    //["Goat", "Leopard", "Zebra"]
-
-    //cycle through the table
-    // for (let r = 0; r < t_data.getRowCount(); r++)
-    //     for (let c = 0; c < t_data.getColumnCount(); c++) {
-    //     print(t_data.getString(r, c));
-    // }
+    
     console.log('END');
 
     // Stats
@@ -43,25 +35,73 @@ function setup() {
         if (int(data_w[i]) > y_max) y_max = int(data_w[i]);
         total += int(data_w[i]);
     }
+    x_lables = t_data.getColumn('Age');
     y_max = (floor(y_max/100) + 1) * 100;
-    y_lengh = height - 100;
+    y_length = height - 100;
     y_spacing = 100;
-    x_lengh = width - 100;
-    x_spacing = floor(x_lengh/entries);
+    x_length = width - 100;
+    x_spacing = floor(x_length/entries);
 
     // Translate
     push();
     translate(50, height - 50);
     scale (1, -1);
-    line(0, 0, width - 100, 0); // X-Achse
-    for (let i = 0; i < x_lengh; i+=x_spacing) {
-        line(i, -4, i, +4);
+
+    // X-Achse
+    for (let x = 0, l = 0; x < x_length; x+=x_spacing, l++) {
+        stroke(0);
+        line(x, -4, x, +4);
+        stroke('rgba(0,0,0,0.15)');
+        line(x, 0, x, y_length);
+        noStroke();
+        scale (1, -1); // Scale is needed so the text isn´t upside down
+        textAlign(CENTER, TOP);
+        if (l < x_lables.length) text(x_lables[l], x, 10);
+        scale (1, -1);
     }
-    // TODO Achsenbeschriftungen
-    line(0, 0, 0, height - 100); // Y-Achse
+    fill(0);
+    stroke(0);
+    line(0, 0, width - 100, 0);
+    triangle(x_length, -4, x_length, 4, x_length + 6, 0);
+    
+    // Y-Achse
     for (let i = 0; i <= y_max; i+=y_spacing) {
-        let y = map(i, 0, y_max, 0, y_lengh);
+        let y = map(i, 0, y_max, 0, y_length);
+        stroke(0);
         line(-4, y, +4, y);
+        stroke('rgba(0,0,0,0.25)');
+        line(0, y, x_length, y);
+        noStroke();
+        scale (1, -1);
+        textAlign(RIGHT, CENTER);
+        let y_invert = map(y, 0, y_length, 0, -y_length);
+        text(i, -10, y_invert); // Y needs to be inverted because of scale
+        scale (1, -1);
+    }
+    fill(0);
+    stroke(0);
+    line(0, 0, 0, height - 100);
+    triangle(-4, y_length, 4, y_length, 0, y_length + 6);
+
+    // Title
+    scale (1, -1);
+    textAlign(CENTER, CENTER);
+    let title_x = x_length/2;
+    let title_y = map(y_length+25, 0, y_length, 0, -y_length);
+    noStroke();
+    text('Germany: Suicide by Age and Gender', title_x, title_y);
+    scale (1, -1);
+
+    // Insert data
+    for (let i = 1, x_pos = x_spacing; i < entries; i++, x_pos+=x_spacing) {
+        // Male: blue line
+        stroke(0,0,255);
+        line(x_pos - x_spacing, map(data_m[i - 1], 0, y_max, 0, y_length),
+            x_pos, map(data_m[i], 0, y_max, 0, y_length));
+        // Female: red line
+        stroke(255,0,0);
+        line(x_pos - x_spacing, map(data_w[i - 1], 0, y_max, 0, y_length),
+            x_pos, map(data_w[i], 0, y_max, 0, y_length));
     }
 
     pop();
