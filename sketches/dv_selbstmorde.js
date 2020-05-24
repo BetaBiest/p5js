@@ -17,36 +17,43 @@ var x_length;
 var x_spacing;
 
 function preload() {
-    console.log('load Table');
+    // console.log('load Table');
     t_data = loadTable('data/dt_selbstmorde_nachAlter2.csv', 'ssv', 'header');
-    console.log('load complete');
+    // console.log('load complete');
 }
 
-function setup() {
-    cavas = makeCanvas();
-
-    // Stats
+function readdata() {
     entries = t_data.getRowCount('w');
     data_m = t_data.getColumn('m');
+    data_w = t_data.getColumn('w');
+    x_lables = t_data.getColumn('Age');
+
+    // Find maximal value for Y
+    y_max = 0;
+        // Male entries
     for (let i = 0; i < entries; i++) {
         if (int(data_m[i]) > y_max) y_max = int(data_m[i]);
         total += int(data_m[i]);
     }
-    data_w = t_data.getColumn('w');
+        // Female entries
     for (let i = 0; i < entries; i++) {
         if (int(data_w[i]) > y_max) y_max = int(data_w[i]);
         total += int(data_w[i]);
     }
-    x_lables = t_data.getColumn('Age');
+    
     y_max = (floor(y_max/100) + 1) * 100;
-    y_length = height - 100;
+}
+
+function drawGraph() {
+    background(255);
+    y_length = window.innerHeight - 100;
     y_spacing = 100;
-    x_length = width - 100;
+    x_length = window.innerWidth - 100;
     x_spacing = floor(x_length/entries+1);
 
     // Translate
     push();
-    translate(50, height - 50);
+    translate(50, window.innerHeight - 50);
     scale (1, -1);
 
     // X-Achse
@@ -63,7 +70,7 @@ function setup() {
     }
     fill(0);
     stroke(0);
-    line(0, 0, width - 100, 0);
+    line(0, 0, window.innerWidth - 100, 0);
     triangle(x_length, -4, x_length, 4, x_length + 6, 0);
     
     // Y-Achse
@@ -116,10 +123,17 @@ function setup() {
         line(x_pos - x_spacing, map(data_w[i - 1], 0, y_max, 0, y_length),
             x_pos, map(data_w[i], 0, y_max, 0, y_length));
     }
-
     pop();
 }
 
-function draw() {
+function windowResized() {
+    resizeCanvas(window.innerWidth, window.innerHeight);
+    drawGraph();
+}
 
+function setup() {
+    cavas = makeCanvas();
+
+    readdata();
+    drawGraph();
 }
