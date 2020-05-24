@@ -1,3 +1,11 @@
+/* Todesursachen:
+Die ausgewählten Todesursachen ermöglichen einen zeitlichen
+Vergleich nach der Umstellung der ICD-Systematik(1980-1997
+ICD9, ab 1998 ICD-10).
+"Insgesamt" enthält die Angaben zu allen Gestorbenen eines
+Berichtsjahres.
+Die enthaltenen Daten betrachten nur einen Ausschnitt der oben genannten */
+
 let t_data;
 var total = 0;
 var entries;
@@ -16,12 +24,6 @@ function preload() {
 
 function setup() {
     cavas = makeCanvas();
-    console.log('START');
-    //count the columns
-    console.log(t_data.getRowCount() + ' total rows in table');
-    console.log(t_data.getColumnCount() + ' total columns in table');
-    
-    console.log('END');
 
     // Stats
     entries = t_data.getRowCount('w');
@@ -40,7 +42,7 @@ function setup() {
     y_length = height - 100;
     y_spacing = 100;
     x_length = width - 100;
-    x_spacing = floor(x_length/entries);
+    x_spacing = floor(x_length/entries+1);
 
     // Translate
     push();
@@ -56,7 +58,7 @@ function setup() {
         noStroke();
         scale (1, -1); // Scale is needed so the text isn´t upside down
         textAlign(CENTER, TOP);
-        if (l < x_lables.length) text(x_lables[l], x, 10);
+        text(x_lables[l], x, 10);
         scale (1, -1);
     }
     fill(0);
@@ -85,11 +87,22 @@ function setup() {
 
     // Title
     scale (1, -1);
-    textAlign(CENTER, CENTER);
-    let title_x = x_length/2;
-    let title_y = map(y_length+25, 0, y_length, 0, -y_length);
+    textAlign(RIGHT, BOTTOM);
+    let title_x = x_length + 45;
+    let title_y = map(-45, 0, y_length, 0, -y_length);
     noStroke();
-    text('Germany: Suicide by Age and Gender', title_x, title_y);
+    textSize(11);
+    text('© Statistisches Bundesamt (Destatis), 2020', title_x, title_y);
+    scale (1, -1);
+
+    // Source
+    scale (1, -1);
+    textAlign(CENTER, CENTER);
+    let source_x = x_length/2;
+    let source_y = map(y_length+25, 0, y_length, 0, -y_length);
+    noStroke();
+    textSize(14);
+    text('Germany: Suicide by Age and Gender', source_x, source_y);
     scale (1, -1);
 
     // Insert data
