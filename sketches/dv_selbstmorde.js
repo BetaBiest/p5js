@@ -92,24 +92,47 @@ function drawGraph() {
     line(0, 0, 0, height - 100);
     triangle(-4, y_length, 4, y_length, 0, y_length + 6);
 
-    // Title
-    scale (1, -1);
-    textAlign(RIGHT, BOTTOM);
-    let title_x = x_length + 45;
-    let title_y = map(-45, 0, y_length, 0, -y_length);
-    noStroke();
-    textSize(11);
-    text('© Statistisches Bundesamt (Destatis), 2020', title_x, title_y);
+    // Description
     scale (1, -1);
 
-    // Source
-    scale (1, -1);
-    textAlign(CENTER, CENTER);
-    let source_x = x_length/2;
-    let source_y = map(y_length+25, 0, y_length, 0, -y_length);
+        // Title
+    let text_x = x_length/2;
+    let text_y = map(y_length+25, 0, y_length, 0, -y_length);
     noStroke();
     textSize(14);
-    text('Germany: Suicide by Age and Gender', source_x, source_y);
+    textAlign(CENTER, CENTER);
+    text('Germany: Suicide by Age and Gender', text_x, text_y);
+
+        // Source
+    text_x = x_length + 45;
+    text_y = map(-45, 0, y_length, 0, -y_length);
+    noStroke();
+    textSize(11);
+    textAlign(RIGHT, BOTTOM);
+    text('© Statistisches Bundesamt (Destatis), 2020', text_x, text_y);
+
+        // Axes
+    text_x = x_length + 10;
+    textAlign(LEFT, TOP);
+    text('Age', text_x, 0);
+    text_y = -y_length - 10;
+    textAlign(RIGHT, BOTTOM);
+    text('Suicides', 0, text_y);
+
+        // Graph
+    text_x = x_length - x_spacing;
+    text_y = -(map(data_m[entries-1], 0, y_max, 0, y_length));
+    textAlign(LEFT, BOTTOM);
+    fill(0,0,255);
+    text('Men', text_x, text_y);
+
+    text_x = x_length - x_spacing;
+    text_y = -(map(data_w[entries-1], 0, y_max, 0, y_length));
+    textAlign(LEFT, BOTTOM);
+    fill(255,0,0);
+    text('Women', text_x, text_y);
+
+    fill(0,0,0)
     scale (1, -1);
 
     // Insert data
