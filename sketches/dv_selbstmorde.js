@@ -101,7 +101,7 @@ function drawGraph() {
     noStroke();
     textSize(14);
     textAlign(CENTER, CENTER);
-    text('Germany: Suicide by Age and Gender', text_x, text_y);
+    text('Germany 2018: Suicide by Age and Gender', text_x, text_y);
 
         // Source
     text_x = x_length + 45;
