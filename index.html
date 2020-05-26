@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,6 +14,7 @@
 	<link rel="stylesheet" href="main.css">
 
 </head>
+
 <body>
 	<div id="header" class="row-header">
 		<h1>P5.js Playground</h1>
@@ -21,7 +23,8 @@
 		<div id="menu" class="card">
 			<p>Hier könnte ihre Werbung stehen</p>
 			<p>Oder auch ein schönes Menü</p>
-			<fieldset><legend>Choose Sketch</legend>
+			<fieldset>
+				<legend>Choose Sketch</legend>
 				<select name="sketch" id="sketch-selector">
 					<optgroup label="Spielereien">
 						<option value="gol.html">Game of Live</option>
@@ -35,7 +38,10 @@
 				<button type="button" onclick="sketchchanger()">Apply</button>
 			</fieldset>
 		</div>
-		<div id="content"><iframe id="sketch-holder" class="card" src="sketches/dv_selbstmorde.html" width="100%" height="100%"></iframe></div>
+		<div id="content">
+			<iframe id="sketch-holder" class="card" src="sketches/dv_selbstmorde.html" width="100%" height="100%"></iframe>
+		</div>
 	</div>
 </body>
+
 </html>
