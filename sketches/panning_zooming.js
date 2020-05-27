@@ -12,7 +12,7 @@ class Coordinate {
     }
 }
 
-var f_offset = new p5.Vector(); // screenoffset
+var f_offset = new p5.Vector; // screenoffset
 var f_offset_mouse = new p5.Vector; // mouse offset
 
 var f_scaleX = 1.;
