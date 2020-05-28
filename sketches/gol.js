@@ -87,7 +87,6 @@ function setup() {
     fr_slider.parent(input_container);
 
     
-    input_container.position(0, height - input_container.size().height - 10);
 
     fr = fr_slider.value();
     scl = size_slider.value();
@@ -119,7 +118,6 @@ function windowResized() {
             grid[x][y] = floor(random(2));
         }
     }
-    input_container.position(0, height - input_container.size().height - 10);
 }
 
 function draw() {
