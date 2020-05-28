@@ -15,6 +15,8 @@ let start_button;
 let size_slider;
 let fr_slider;
 
+let over_menu = false;
+
 
 
 function make2DArray(cols, rows) {
@@ -62,19 +64,20 @@ function swap_pp() {
 }
 
 function mouseClicked() {
-    let x = floor(mouseX/scl);
-    let y = floor(mouseY/scl);
-    if (x <= size.cols && y <= size.rows) {
-        if (grid[x][y] == 1) grid[x][y] = 0;
-        else                 grid[x][y] = 1;
+    if (!over_menu) {
+        let x = floor(mouseX/scl);
+        let y = floor(mouseY/scl);
+        if (x <= size.cols && y <= size.rows) {
+            if (grid[x][y] == 1) grid[x][y] = 0;
+            else                 grid[x][y] = 1;
+        }
     }
 }
 
 function setup() {
     makeCanvas();
 
-    input_container = createDiv('');
-    input_container.id('input');
+    input_container = document.querySelector('#controls');
 
     button = createButton('Play');
     button.parent(input_container);
@@ -82,17 +85,11 @@ function setup() {
 
     size_slider = createSlider(5, 100, 10, 5);
     size_slider.parent(input_container);
-
     fr_slider = createSlider(5, 100, 60, 5);
     fr_slider.parent(input_container);
 
-    
-
     fr = fr_slider.value();
     scl = size_slider.value();
-
-
-
 
     frameRate(fr);
 
@@ -172,4 +169,18 @@ function draw() {
         grid = next;
     }
 
+}
+
+/* ************************************************************************** */
+/* ****************************End of the p5 sketch************************** */
+/* ************************************************************************** */
+
+function setArrowRight() {
+    let element = document.querySelector('#arrow .icon b');
+    element.innerText = '4';
+}
+
+function setArrowLeft() {
+    let element = document.querySelector('#arrow .icon b');
+    element.innerText = '3';
 }
