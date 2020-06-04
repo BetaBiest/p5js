@@ -47,3 +47,11 @@
 
     left: 0;
 }
+
+#icon {
+	transition: transform 0.4s;
+}
+
+#input:hover #icon {
+	transform: rotate(180deg);
+}

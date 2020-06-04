@@ -176,11 +176,11 @@ function draw() {
 /* ************************************************************************** */
 
 function setArrowRight() {
-    let element = document.querySelector('#arrow .icon b');
-    element.innerText = '4';
+    // let element = document.querySelector('#arrow .icon b');
+    // element.innerText = '4';
 }
 
 function setArrowLeft() {
-    let element = document.querySelector('#arrow .icon b');
-    element.innerText = '3';
+    // let element = document.querySelector('#arrow .icon b');
+    // element.innerText = '3';
 }
